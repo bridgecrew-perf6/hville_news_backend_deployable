@@ -1,5 +1,5 @@
 import User from "../models/user";
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
 
 export const createUser= async (req, res)=>{
@@ -31,7 +31,7 @@ export const login = async (req, res) =>{
     try{
         const user = await User.findOne({email: email}).exec();
         if(!user){
-           return res.status(400).send("user with that email does not exist.")
+           return res.status(400).send("Login has failed, email or password incorrect.")
         }
         else{
             console.log(user)
@@ -46,6 +46,10 @@ export const login = async (req, res) =>{
                    email: user.email
                }})
                
+            }
+            else{
+                console.log(`login error ${err}`);
+                res.status(400).send("Login has failed.")
             }
         }
 
