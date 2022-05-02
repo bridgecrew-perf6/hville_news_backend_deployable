@@ -16,7 +16,7 @@ mongoose
 
 //yah
 app.get("/", (req, res) => {
-    res.send("Express on Vercel");
+    res.send("Express is ALIVE");
   });
 
 
@@ -35,4 +35,3 @@ app.use("/api", require(`./routes/${r}`))
 const port = process.env.PORT || 8080
 app.listen(port, ()=> console.log(`server is running on ${port}`));
 
-module.exports = app;
